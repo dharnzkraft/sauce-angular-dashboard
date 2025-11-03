@@ -1,0 +1,18 @@
+<div>
+    <app-page-breadcrumb pageTitle="All Transactions" />
+
+    @switch (transactionState) {
+      @case ('viewAllTransactions') {
+        <div>
+          <app-reusable-table
+            [columns]="columns"
+            [data]="allTransactions || []"
+            [pageSize]="5"
+            (pageChange)="onPageChange($event)"
+          >
+          </app-reusable-table>
+        </div>
+      }
+
+    }
+</div>

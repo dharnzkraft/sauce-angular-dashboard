@@ -22,6 +22,12 @@ import { inject } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
 import { map } from 'rxjs';
 import { UsersComponent } from './pages/users/users.component';
+import { SellersComponent } from './pages/sellers/sellers.component';
+import { RidersComponent } from './pages/riders/riders.component';
+import { KycVerificationComponent } from './pages/kyc-verification/kyc-verification.component';
+import { AllTransactionsComponent } from './pages/all-transactions/all-transactions.component';
+import { SetupComponent } from './pages/setup/setup.component';
+import { PayoutRequestsComponent } from './pages/payout-requests/payout-requests.component';
 
 export const authGuard = () => {
   const auth = inject(Auth);
@@ -55,7 +61,37 @@ export const routes: Routes = [
       {
         path:'users',
         component:UsersComponent,
-        title:'Angular Users | TailAdmin - Angular Admin Dashboard Template'
+        title:'mySauce Users <=>'
+      },
+      {
+        path:'vendors',
+        component:SellersComponent,
+        title:'mySauce Sellers <=>'
+      },
+      {
+        path:'riders',
+        component:RidersComponent,
+        title:'mySauce Riders <=>'
+      },
+      {
+        path:'transactions',
+        component:AllTransactionsComponent,
+        title:'mySauce Transactions <=>'
+      },
+      {
+        path:'setup',
+        component:SetupComponent,
+        title:'mySauce Setup <=>'
+      },
+      {
+        path:'payouts',
+        component:PayoutRequestsComponent,
+        title:'mySauce Payouts <=>'
+      },
+      {
+        path:'verify',
+        component:KycVerificationComponent,
+        title:'mySauce Vendors ||'
       },
       {
         path:'calendar',

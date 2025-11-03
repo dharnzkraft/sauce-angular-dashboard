@@ -1,5 +1,5 @@
 <div>
-  <app-page-breadcrumb pageTitle="Users" />
+  <app-page-breadcrumb pageTitle="Riders" />
 
   @switch (userState) {
     @case ('viewAllUsers') {
@@ -21,7 +21,7 @@
                 (click)="userState = 'viewAllUsers'"
                 class="px-4 py-2 mb-5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
             >
-                Back to Users
+                Back to Riders
             </button>
         </div>
         <div
@@ -40,13 +40,13 @@
                 <h4
                   class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left"
                 >
-                  {{ selectedUser.userName }} 
+                  {{ selectedUser.riderName }} 
                 </h4>
                 <div
                   class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left"
                 >
                   <p class="text-sm text-gray-500 dark:text-gray-400">
-                    User Status: {{ selectedUser.status | uppercase}}
+                    Rider Status: {{ selectedUser.status }}
                   </p>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                     User Names
                   </p>
                   <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ selectedUser.userName }}
+                    {{ selectedUser.riderName }}
                   </p>
                 </div>
                 
@@ -75,7 +75,7 @@
                     Email address
                   </p>
                   <p class="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {{ selectedUser.userEmail }}
+                    {{ selectedUser.riderEmail }}
                   </p>
                 </div>
                 <div>
@@ -84,6 +84,15 @@
                   </p>
                   <p class="text-sm font-medium text-gray-800 dark:text-white/90">
                     {{ selectedUser.phoneNumber }}
+                  </p>
+                </div>
+
+                 <div>
+                  <p class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                    NIN
+                  </p>
+                  <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                    {{ selectedUser.nin }}
                   </p>
                 </div>
               </div>
@@ -95,13 +104,26 @@
             (click)="blockUser(selectedUser.id)"
                 class="px-4 py-2 mb-5 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-800"
             >
-                Block User
+                Deactivate Rider
             </button>
             <button
             (click)="unblockUser(selectedUser.id)"
                 class="px-4 py-2 mb-5 ml-3 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-800"
             >
-                Unblock User
+                Activate Rider
+            </button>
+            <button
+            (click)="approveSeller(selectedUser.id)"
+                class="px-4 py-2 mb-5 ml-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-800"
+            >
+                Approve Seller
+            </button>
+
+            <button
+            (click)="disapproveSeller(selectedUser.id)"
+                class="px-4 py-2 mb-5 ml-3 text-sm font-medium text-white bg-red-300 rounded-lg hover:bg-red-800"
+            >
+                Disappprove Seller
             </button>
         </div>
       </div>
