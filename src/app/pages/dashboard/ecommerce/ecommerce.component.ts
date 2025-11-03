@@ -5,6 +5,7 @@ import { MonthlyTargetComponent } from '../../../shared/components/ecommerce/mon
 import { StatisticsChartComponent } from '../../../shared/components/ecommerce/statics-chart/statics-chart.component';
 import { DemographicCardComponent } from '../../../shared/components/ecommerce/demographic-card/demographic-card.component';
 import { RecentOrdersComponent } from '../../../shared/components/ecommerce/recent-orders/recent-orders.component';
+import { FirestoreService } from '../../../core/services/firestoreService';
 
 @Component({
   selector: 'app-ecommerce',
@@ -18,4 +19,37 @@ import { RecentOrdersComponent } from '../../../shared/components/ecommerce/rece
   ],
   templateUrl: './ecommerce.component.html',
 })
-export class EcommerceComponent {}
+export class EcommerceComponent {
+  allUsers: any[] | undefined;
+  totalOrders: any[] | undefined;
+  totalRiders: any[] | undefined;
+  totalSellers: any[] | undefined;
+  constructor(
+      private fireService: FirestoreService
+    ) {
+      this.fireService.getCollection('users').subscribe(data => {
+        // console.log('Users data:', data);
+        this.allUsers = data;
+      });
+  
+      this.fireService.getCollection('orders').subscribe(data => {
+        // console.log('Orders data:', data);
+        this.totalOrders = data;
+      });
+  
+      this.fireService.getCollection('orders').subscribe(data => {
+        // console.log('Orders data:', data);
+        this.totalOrders = data;
+      });
+  
+      this.fireService.getCollection('riders').subscribe(data => {
+        // console.log('Riders data:', data);
+        this.totalRiders = data;
+      });
+  
+      this.fireService.getCollection('sellers').subscribe(data => {
+        // console.log('Riders data:', data);
+        this.totalSellers = data;
+      });
+    }
+}

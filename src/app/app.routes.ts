@@ -21,6 +21,7 @@ import { CalenderComponent } from './pages/calender/calender.component';
 import { inject } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
 import { map } from 'rxjs';
+import { UsersComponent } from './pages/users/users.component';
 
 export const authGuard = () => {
   const auth = inject(Auth);
@@ -52,9 +53,14 @@ export const routes: Routes = [
           'Angular Ecommerce Dashboard | TailAdmin - Angular Admin Dashboard Template',
       },
       {
+        path:'users',
+        component:UsersComponent,
+        title:'Angular Users | TailAdmin - Angular Admin Dashboard Template'
+      },
+      {
         path:'calendar',
         component:CalenderComponent,
-        title:'Angular Calender | TailAdmin - Angular Admin Dashboard Template'
+        title:'Angular Calendar | TailAdmin - Angular Admin Dashboard Template'
       },
       {
         path:'profile',

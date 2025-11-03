@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BadgeComponent } from '../../ui/badge/badge.component';
 import { SafeHtmlPipe } from '../../../pipe/safe-html.pipe';
 import { Firestore } from '@angular/fire/firestore';
@@ -10,13 +10,27 @@ import { FirestoreService } from '../../../../core/services/firestoreService';
   templateUrl: './ecommerce-metrics.component.html'
 })
 export class EcommerceMetricsComponent {
-
+  
+  @Input() users: any[] | undefined;
+  @Input() orders: any[] | undefined;
+  @Input() riders: any[] | undefined;
+  @Input() sellers: any[] | undefined;
+  uncompletedOrdersCount: number | undefined;
   constructor(
     private fireService: FirestoreService
   ) {
-    this.fireService.getCollection('users').subscribe(data => {
-      console.log('Users data:', data);
-    });
+    
+   setTimeout(() => {
+    if(this.orders?.length){
+      const uncompletedOrders = this.orders ? this.orders.filter(order => order.status !== 'ended') : [];
+      // console.log('Uncompleted Orders:', uncompletedOrders);
+      this.uncompletedOrdersCount = uncompletedOrders.length;
+    }
+   }, 3000);
+  }
+
+  ngOnInit(): void {
+    
   }
 
   public icons = {
