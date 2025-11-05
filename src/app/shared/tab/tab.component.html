@@ -1,0 +1,38 @@
+ <div class="w-full">
+      <!-- Tab Navigation -->
+      <div class="border-b border-gray-200 dark:border-gray-700">
+        <nav class="flex -mb-px space-x-8" [class.space-x-4]="variant === 'pills'">
+          @for (tab of tabs; track tab.id) {
+            <button
+              (click)="selectTab(tab)"
+              [disabled]="tab.disabled"
+              [class]="getTabClasses(tab)"
+              type="button"
+            >
+              <!-- Icon (optional) -->
+              @if (tab.icon) {
+                <span class="mr-2" [innerHTML]="tab.icon"></span>
+              }
+              
+              <!-- Label -->
+              <span>{{ tab.label }}</span>
+              
+              <!-- Badge (optional) -->
+              @if (tab.badge) {
+                <span
+                  class="ml-2 px-2 py-0.5 text-xs font-medium rounded-full"
+                  [class]="getBadgeClasses(tab)"
+                >
+                  {{ tab.badge }}
+                </span>
+              }
+            </button>
+          }
+        </nav>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="py-4">
+        <ng-content></ng-content>
+      </div>
+    </div>

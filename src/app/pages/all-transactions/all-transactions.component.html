@@ -6,7 +6,7 @@
         <div>
           <app-reusable-table
             [columns]="columns"
-            [data]="allTransactions || []"
+            [data]="formattedTransactions"
             [pageSize]="5"
             (pageChange)="onPageChange($event)"
           >

@@ -1,1 +1,90 @@
-<p>setup works!</p>
+<div>
+    <app-page-breadcrumb pageTitle="Charges Setup" />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Service Charge : NGN {{ serviceCharge?.[0]?.amount }}
+            </h3>
+            <button
+              (click)="openEditModal()"
+              class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+              </svg>
+              Edit
+            </button>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400">
+            Amount charged to users as service charge per order
+          </p>
+        </div>
+         <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Per Delivery Charge : NGN {{ deliveryCharge?.[0]?.amount }}
+            </h3>
+            <button
+              (click)="openEditModal()"
+              class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+              </svg>
+              Edit
+            </button>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400">
+            Amount charged and paid to delivery riders
+          </p>
+        </div>
+    </div>
+
+    <app-modal
+        [isOpen]="isOpen"
+    (close)="closeModal()"
+    className="max-w-[700px] p-6 lg:p-10"
+      >
+      <div class="text-center">Service Charge</div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Service Charge
+          </label>
+          <input
+            type="number"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            [(ngModel)]="amount" name="amount"
+          />
+          <button
+            (click)="updateServiceCharge()"
+            class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"    
+          >
+            Update Service Charge
+          </button>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="text-center">
+            Per Delivery Charge
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Per Delivery Charge
+          </label>
+          <input
+            type="number"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            [(ngModel)]="deliveryAmount" name="amount"
+          />
+          <button
+            (click)="updateDeliveryCharge()"
+            class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"    
+          >
+            Update Per Delivery Charge
+          </button>
+        </div>
+      </app-modal>
+    </div>
